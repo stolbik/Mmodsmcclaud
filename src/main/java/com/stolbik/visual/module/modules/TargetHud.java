@@ -9,7 +9,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.hit.EntityHitResult;
 
 /** Panel with the name and health of the entity you look at or just hit. */
-public class TargetHud extends Module {
+public class TargetHud extends Module implements com.stolbik.visual.module.HudRenderable {
     private final NumSetting offsetX = add(new NumSetting("Offset X", 20, -200, 200, 5));
     private final NumSetting offsetY = add(new NumSetting("Offset Y", 40, -100, 200, 5));
     private LivingEntity target;
@@ -38,6 +38,7 @@ public class TargetHud extends Module {
         }
     }
 
+    @Override
     public void render(DrawContext ctx) {
         MinecraftClient mc = mc();
         if (target == null || mc.player == null || mc.options.hudHidden) {

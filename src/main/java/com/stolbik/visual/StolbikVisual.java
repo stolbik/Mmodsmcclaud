@@ -47,10 +47,8 @@ public class StolbikVisual implements ClientModInitializer {
                 if (!m.isEnabled()) {
                     continue;
                 }
-                if (m instanceof Hud hud) {
-                    hud.render(context);
-                } else if (m instanceof TargetHud th) {
-                    th.render(context);
+                if (m instanceof com.stolbik.visual.module.HudRenderable r) {
+                    r.render(context);
                 }
             }
         });
@@ -60,6 +58,10 @@ public class StolbikVisual implements ClientModInitializer {
                 TargetHud th = ModuleManager.get(TargetHud.class);
                 if (th != null && th.isEnabled()) {
                     th.setTarget(entity);
+                }
+                com.stolbik.visual.module.modules.HitSound hs = ModuleManager.get(com.stolbik.visual.module.modules.HitSound.class);
+                if (hs != null && hs.isEnabled()) {
+                    hs.onAttack();
                 }
                 HitParticles hp = ModuleManager.get(HitParticles.class);
                 if (hp != null && hp.isEnabled()) {

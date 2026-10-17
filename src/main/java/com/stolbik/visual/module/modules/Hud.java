@@ -5,7 +5,7 @@ import com.stolbik.visual.module.setting.BoolSetting;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 
-public class Hud extends Module {
+public class Hud extends Module implements com.stolbik.visual.module.HudRenderable {
     private final BoolSetting watermark = add(new BoolSetting("Watermark", true));
     private final BoolSetting fps = add(new BoolSetting("FPS", true));
     private final BoolSetting coords = add(new BoolSetting("Coordinates", false));
@@ -15,6 +15,7 @@ public class Hud extends Module {
         restoreEnabled(true);
     }
 
+    @Override
     public void render(DrawContext context) {
         MinecraftClient mc = mc();
         if (mc.options.hudHidden || mc.player == null) {

@@ -1,5 +1,14 @@
 package com.stolbik.visual.module;
 
+import com.stolbik.visual.module.modules.InfoHud;
+import com.stolbik.visual.module.modules.Crosshair;
+import com.stolbik.visual.module.modules.HealthWarning;
+import com.stolbik.visual.module.modules.DeathCoords;
+import com.stolbik.visual.module.modules.AutoRespawn;
+import com.stolbik.visual.module.modules.ArmorWarning;
+import com.stolbik.visual.module.modules.AmbientParticles;
+import com.stolbik.visual.module.modules.HitSound;
+import com.stolbik.visual.module.modules.NoBob;
 import com.stolbik.visual.module.modules.Ambience;
 import com.stolbik.visual.module.modules.AutoSprint;
 import com.stolbik.visual.module.modules.HitParticles;
@@ -31,6 +40,15 @@ public final class ModuleManager {
         MODULES.add(new Trails());
         MODULES.add(new Ambience());
         MODULES.add(new Zoom());
+        MODULES.add(new InfoHud());
+        MODULES.add(new Crosshair());
+        MODULES.add(new HealthWarning());
+        MODULES.add(new DeathCoords());
+        MODULES.add(new AutoRespawn());
+        MODULES.add(new ArmorWarning());
+        MODULES.add(new AmbientParticles());
+        MODULES.add(new HitSound());
+        MODULES.add(new NoBob());
     }
 
     public static List<Module> all() {
