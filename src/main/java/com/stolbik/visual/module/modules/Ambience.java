@@ -22,7 +22,7 @@ public class Ambience extends Module {
             return;
         }
         if (customTime.get()) {
-            mc.world.setTimeOfDay((long) time.get());
+            mc.world.getLevelProperties().setTimeOfDay((long) time.get());
         }
         if (clearWeather.get()) {
             mc.world.setRainGradient(0f);
