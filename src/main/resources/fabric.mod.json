@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "stolbikvisual",
+  "version": "${version}",
+  "name": "Stolbik Visual",
+  "description": "Client-side visual and optimization mod for Minecraft 1.21.4. Inspired by the idea of EnoughVisuals (enoughvisuals.fun).",
+  "authors": ["stolbik"],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.stolbik.visual.StolbikVisual"]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "fabric-api": "*",
+    "minecraft": "~1.21.4",
+    "java": ">=21"
+  }
+}
