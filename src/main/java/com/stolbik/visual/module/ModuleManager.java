@@ -1,6 +1,12 @@
 package com.stolbik.visual.module;
 
+import com.stolbik.visual.module.modules.Ambience;
 import com.stolbik.visual.module.modules.AutoSprint;
+import com.stolbik.visual.module.modules.HitParticles;
+import com.stolbik.visual.module.modules.JumpCircle;
+import com.stolbik.visual.module.modules.TargetHud;
+import com.stolbik.visual.module.modules.Trails;
+import com.stolbik.visual.module.modules.Zoom;
 import com.stolbik.visual.module.modules.Hud;
 import com.stolbik.visual.module.modules.NightVision;
 import com.stolbik.visual.module.modules.Optimization;
@@ -19,10 +25,26 @@ public final class ModuleManager {
         MODULES.add(new NightVision());
         MODULES.add(new Optimization());
         MODULES.add(new AutoSprint());
+        MODULES.add(new TargetHud());
+        MODULES.add(new HitParticles());
+        MODULES.add(new JumpCircle());
+        MODULES.add(new Trails());
+        MODULES.add(new Ambience());
+        MODULES.add(new Zoom());
     }
 
     public static List<Module> all() {
         return MODULES;
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T extends Module> T get(Class<T> type) {
+        for (Module m : MODULES) {
+            if (type.isInstance(m)) {
+                return (T) m;
+            }
+        }
+        return null;
     }
 
     public static List<Module> byCategory(Module.Category category) {
