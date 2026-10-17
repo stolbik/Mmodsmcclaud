@@ -20,7 +20,21 @@ jobs:
           gradle-version: '8.12'
 
       - name: Build
-        run: gradle build --no-daemon --stacktrace
+        shell: bash
+        run: |
+          set -o pipefail
+          gradle build --no-daemon --stacktrace 2>&1 | tee build.log
+
+      - name: Report errors
+        if: failure()
+        shell: bash
+        run: |
+          grep -nE "error:|warning: \[|What went wrong|Could not|FAILED|Caused by" build.log | head -25 | while IFS= read -r line; do
+            echo "::error::${line:0:400}"
+          done
+          grep -nA6 "What went wrong" build.log | head -20 | while IFS= read -r line; do
+            echo "::error::${line:0:400}"
+          done
 
       - name: Upload jar
         uses: actions/upload-artifact@v4
