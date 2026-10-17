@@ -29,11 +29,8 @@ jobs:
         if: failure()
         shell: bash
         run: |
-          grep -nE "error:|warning: \[|What went wrong|Could not|FAILED|Caused by" build.log | head -25 | while IFS= read -r line; do
-            echo "::error::${line:0:400}"
-          done
-          grep -nA6 "What went wrong" build.log | head -20 | while IFS= read -r line; do
-            echo "::error::${line:0:400}"
+          grep -A3 "error:" build.log | head -40 | sed 's|/home/runner/work/[^/]*/[^/]*/src/main/java/||' | while IFS= read -r line; do
+            echo "::error::${line:0:300}"
           done
 
       - name: Upload jar
